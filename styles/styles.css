@@ -3,7 +3,8 @@
 }
 
 body {
-  background: url('../images/background-img.jpg') no-repeat center fixed;
+  background: url('../images/background-img.jpg')
+  no-repeat center fixed;
   background-size: cover;
   width: 100%;
   height: 900px;
@@ -26,12 +27,21 @@ header {
 h1 {
   color: white;
   text-align: center;
-  margin: 0;
+  /* margin: 0;
   width: 360px;
-  margin: auto;
-  padding: 10px;
+  margin: auto; */
+  padding: 15px;
   /* padding-top: 250px; */
   border: 1px solid white;
+  font-size: 1.5rem;
+}
+
+.guitar-logo {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  text-align:center;
+/* padding: 10px; */
 }
 
 p {
@@ -39,7 +49,7 @@ p {
 }
 
 .intro-start {
-  width: 90%;
+  width: 300px;
   margin: 100px auto;
 }
 h2 {
@@ -143,7 +153,7 @@ h2 {
   /* margin-bottom: 40px; */
   color: #ffffff;
   text-transform: uppercase;
-  margin-top: 130px;
+  margin-top: 0px;
 
 }
 
@@ -249,4 +259,26 @@ img {
   font-size: 1.5rem;
   padding-bottom: 10px;
   color: #F44336;
+}
+
+@media screen and (min-width:40em) {
+  .intro-start {
+    width: 320px;
+    margin: 100px auto;
+}
+.jq-form {
+    /* display: none; */
+    width: 80%;
+    margin: 100px auto;
+    z-index: 40;
+  }
+}
+
+@media screen and (min-width:60em) {
+.jq-form {
+    /* display: none; */
+    width: 60%;
+    margin: 100px auto;
+    z-index: 40;
+  }
 }
