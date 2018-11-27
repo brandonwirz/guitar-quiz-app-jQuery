@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -8,20 +9,33 @@ body {
   background-size: cover;
   width: 100%;
   height: 900px;
+  /* overflow: hidden; */
   position: relative;
   z-index: 0
   /* margin:0;
   padding:0; */
   /* font-family: arial; */
 }
+.layer-overlay {
+    background-color: rgba(22,36,70, .6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150%;
+    z-index: 1;
+}
 
 main {
-  margin: 0 auto;
+  margin: 50px auto 0;
+  position: relative;
+  z-index: 2
 }
 
 header {
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 h1 {
@@ -36,8 +50,17 @@ h1 {
   font-size: 1.5rem;
 }
 
+h2 {
+  text-align: center;
+  /* margin-bottom: 40px; */
+  color: #ffffff;
+  /* text-transform: uppercase; */
+  /* margin-top: 0px; */
+  font-size: 1.4rem;
+  padding: 0 10px 0;
+}
 .guitar-logo {
-  width: 100%;
+  width: 50%;
   height: auto;
   margin: 0 auto;
   text-align:center;
@@ -50,31 +73,30 @@ p {
 
 .intro-start {
   width: 300px;
-  margin: 100px auto;
+  margin: 0 auto;
 }
-h2 {
-  text-transform: center;;
-}
+
 button {
   display: block;
-  background: #1776d4;
+  background: #2349ea;;
   color: white;
   padding: 15px 20px;
-  margin: 15px auto;
+  margin: 25px auto;
   font-size: 20px;
   text-transform: uppercase;
   transition: all 1s ease;
+  border-radius: 3px;
+
 }
 
 .jq-form {
   display: none;
   width: 100%;
-  margin-top: 100px;
+  margin-top: 0px;
 }
 .styled-form {
   width: 100%;
   margin: 0 auto;
-
 }
 .start-button, .next-button {
   margin-top: 50px;
@@ -83,30 +105,26 @@ button {
   background: #0f5bb1;
   /* transition: all 0.3s ease; */
 }
-p {}
 
 button:hover, button:focus {
   /* background-color: #363946; */
   /* color: #ebca52; */
 }
 
-/* main div {
-    margin: 0 auto;
-} */
 label:nth-child(1) {
-  background: #2749c7;
+  background:#000E4C;
 }
 
 label:nth-child(2) {
-  background: #2b60bf;
+  background:#4C6EFF;
 }
 
 label:nth-child(3) {
-  background: #2884bf;
+  background:#3D58CC;
 }
 
 label:nth-child(4) {
-  background: #23b8cc;
+  background:#0022B2;
 }
 
 label {
@@ -117,7 +135,9 @@ label {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease-out;
-  line-height: 22px
+  line-height: 22px;
+  border-radius: 5px;
+
 }
 
 label:hover, label:focus {
@@ -134,57 +154,48 @@ input {
   -moz-appearance: none;
   appearance: none;
   border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #ffffff;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #ffffff;
   transition: 0.4s all linear;
   outline: none;
   margin-right: 5px;
   position: relative;
-  top: 2px;
+  top: 3px;
 }
 
 input:checked {
   border: 8px solid #65a7fa;
 }
-
-h2 {
-  text-align: center;
-  /* margin-bottom: 40px; */
-  color: #ffffff;
-  text-transform: uppercase;
-  margin-top: 0px;
-
+input[type=radio] {
+    flex: 0 0 auto;
+    /* margin-right: 10px; */
 }
 
-/* form button {
-  padding: 14px;
-  background-color: #FFC107;
-  color: #003366;
+.start-button {
+  cursor: pointer;
+}
+
+.submit-button{
   font-size: 18px;
   text-transform: uppercase;
   border-radius: 0;
-  cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 15px;
-  width: 100%;
-  text-align: left;
-  border: none;
+  /* margin-top: 15px;
+  width: 100%; */
+  /* text-align: left; */
+  /* border: none; */
+  cursor: pointer;
 }
-.answerNum {
-  color:white;
-  display: block;
-  padding-bottom: 2px;
-} */
 
 form button:hover, form button:focus {
-  background: #363946;
+  background: #0037BF;
   color: #497bfb;
 }
 .jq-form {
   /* display: none; */
   width: 100%;
-  margin-top: 100px;
+  margin-top: 0px;
   z-index: 40;
 }
 .quiz-start {
@@ -203,6 +214,7 @@ form button:hover, form button:focus {
   text-align: center;
   margin-top:50px;
   padding: 20px;
+  color: white;
 }
 .tally li {
   padding: 5px;
@@ -223,14 +235,14 @@ form button:hover, form button:focus {
 img {
   width:100%;
   height:auto;
-  /* padding:10px; */
+  padding:10px;
 }
 
-.correctAnswerImg {
+/* .correctAnswerImg {
   width:100%;
   height:auto;
   padding:10px;
-}
+} */
 
 .wrong-answer, .correct-answer, .final-screen {
   background: rgba(15, 36, 101, 0.65);
@@ -261,15 +273,21 @@ img {
   color: #F44336;
 }
 
+.status-bar{
+  color:white;
+}
+
+
+
 @media screen and (min-width:40em) {
   .intro-start {
     width: 320px;
-    margin: 100px auto;
+    margin: 0px auto;
 }
 .jq-form {
     /* display: none; */
     width: 80%;
-    margin: 100px auto;
+    margin: 0 auto;
     z-index: 40;
   }
 }
@@ -278,7 +296,7 @@ img {
 .jq-form {
     /* display: none; */
     width: 60%;
-    margin: 100px auto;
+    margin: 0 auto;
     z-index: 40;
   }
 }

@@ -8,27 +8,28 @@
   <link rel="stylesheet" href="./styles/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <title>Guitar Quiz</title>
-  <script src="data.js"></script>
-  <script src="index.js"></script>
+<legend></legend>
 </head>
 <body>
+  <div class="layer-overlay"></div>
   <main role="main">
      <div class="intro-start">
        <header role="heading">
          <h1>Guitar Virtuoso Quiz</h1>
-          <img class="guitar-logo" src="./images/Generation-Axe-logo.png" alt="generation axe logo two guitars crossed black and white graphic">
+          <img class="guitar-logo" src="./images/Generation-Axe-logo-wh.png" alt="generation axe logo two guitars crossed black and white graphic">
        </header>
          <div class="quiz-start">
            <h2>Test your guitar trivia knowledge.</h2>
-             <button type="button" class="start-button" role="button">Start</button>
+             <button type="button" class="start-button">Start</button>
          </div>
      </div>
-      <!-- <ul class="tally">
-        <li>Questions: <span class="my-questions">0</span>/10</li>
-        <li>Score: <span class="my-score">0/0</span></li>
-      </ul> -->
-      <div class="jq-form"></div>
+     <div class="jq-form"></div>
+      <ul role="list" class="tally">
+        <li role="listitem">Questions: <span class="question-num">0</span>/6</li>
+        <li role="listitem">Score: <span class="my-score">0/0</span></li>
+      </ul>
   </main>
-
+  <script src="data.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
