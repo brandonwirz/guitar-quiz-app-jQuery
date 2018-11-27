@@ -7,7 +7,7 @@ function startQuiz() {
    $('.quiz-start').on('click', function(event) {
    $('.quiz-start').remove();
    $('.jq-form').css('display', 'block')
-   $('.question-num').text(1);
+   // $('.question-num').text(1);
   });
 }
 
@@ -52,7 +52,7 @@ function renderHTML() {
   } else {
     quizResultsPage();
     restart();
-    $('.question-num').text(6)
+    // $('.question-num').text(6)
   }
 }
 function newQuestion () {
