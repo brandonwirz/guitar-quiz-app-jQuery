@@ -86,7 +86,7 @@ button {
   text-transform: uppercase;
   transition: all 1s ease;
   border-radius: 3px;
-
+  cursor: pointer;
 }
 
 .jq-form {
@@ -163,10 +163,13 @@ input {
   position: relative;
   top: 3px;
 }
-
-input:checked {
-  border: 8px solid #65a7fa;
+input[type=text]:focus {
+  width: 250px;
 }
+input:checked {
+  border: 8px solid
+}
+
 input[type=radio] {
     flex: 0 0 auto;
     /* margin-right: 10px; */
@@ -203,20 +206,20 @@ form button:hover, form button:focus {
   width: 100%;
 }
 
-.tally {
+/* .tally {
   margin: 0 auto;
   text-align: center;
   width: 100%;
   margin: 0;
   padding: 0;
-}
+} */
 #status-bar {
   text-align: center;
   margin-top:50px;
   padding: 20px;
   color: white;
 }
-.tally li {
+/* .tally li {
   padding: 5px;
 }
 
@@ -224,7 +227,7 @@ form button:hover, form button:focus {
   display: inline-block;
   list-style: none;
   color: white;
-}
+} */
 
 .displayed-content {
   /* display: none; */
@@ -233,7 +236,7 @@ form button:hover, form button:focus {
 }
 
 img {
-  width:100%;
+  width:95%;
   height:auto;
   padding:10px;
 }
@@ -250,12 +253,12 @@ img {
   text-align: center;
   color: white;
   font-size: 25px;
-  border: 1px solid white;
   padding-bottom: 20px;
-}
+  border: 1px solid #8192f1;
+  }
 
 .red {
-  color: #F44336;
+  color: #bd0423;
 }
 
 .guitarist-image {
@@ -268,15 +271,17 @@ img {
 }
 
 .guitarist-name {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   padding-bottom: 10px;
-  color: #F44336;
+  color: #bd0423;
 }
 
 .status-bar{
   color:white;
 }
-
+.white-answer-heading {
+  color:white;
+}
 
 
 @media screen and (min-width:40em) {
@@ -289,6 +294,16 @@ img {
     width: 80%;
     margin: 0 auto;
     z-index: 40;
+  }
+  .displayed-content {
+    /* display: none; */
+    width: 70%;
+    margin: 0 auto;
+  }
+  img {
+    width:80%;
+    height:auto;
+    padding:10px;
   }
 }
 

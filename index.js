@@ -7,7 +7,6 @@ function startQuiz() {
    $('.quiz-start').on('click', function(event) {
    $('.quiz-start').remove();
    $('.jq-form').css('display', 'block')
-   // $('.question-num').text(1);
   });
 }
 
@@ -47,7 +46,11 @@ function renderHTML() {
           </label>
           <button role="button" type="submit" class="submit-button">Submit</button>
       </fieldset>
-    </form>`
+    </form>
+      <div id="status-bar">
+        <span id="question-count">Question: ${quizData[selectedQuestion].questionNum}/6</span>
+        <span id="score-count">Score: ${scoreUpdate}/${selectedQuestion}</span>
+      </div>`
 
   } else {
     quizResultsPage();
@@ -55,9 +58,13 @@ function renderHTML() {
     // $('.question-num').text(6)
   }
 }
+
+
 function newQuestion () {
   selectedQuestion++;
-  $('.question-num').text(selectedQuestion++);
+  $('.question-num').text(selectedQuestion + 1);
+      $('html, body').animate({scrollTop: $("body").offset().top
+    }, 'slow', 'swing');
 }
 function changeScore () {
   scoreUpdate ++;
@@ -92,18 +99,18 @@ function isWrongAnswer() {
 function userFeedbackIsCorrect() {
   // the feedback for right answer
   let correctAnswer = `${quizData[selectedQuestion].correctAnswer}`;
-     $('.jq-form').html(`<div class="displayed-content correct-answer"><p class="red">Correct! You got it right!</p><div class="">
+     $('.jq-form').html(`<section role="region" class="displayed-content correct-answer"><p class="red">Correct! <span class="white-answer-heading">You got it right!<span></p><div class="">
      <img src="${quizData[selectedQuestion].image}" alt="You got it right!"/></div><p class="guitarist-name">"${correctAnswer}"</p>
      <button type="button" class="next-button">Next Question</button>
-     </div>`);
+     </section>`);
 }
 
 function userFeedbackIsWrong() {
   // the feedback for wrong answer
   let correctAnswer = `${quizData[selectedQuestion].correctAnswer}`;
-     $('.jq-form').html(`<div class="wrong-answer"><p class="red">Sorry! You got it wrong!</p><div class=""><img src="${quizData[selectedQuestion].image}" alt="You got it wrong!"/></div><p class="guitarist-name">"${correctAnswer}"</p>
+     $('.jq-form').html(`<section role="region" class="wrong-answer"><p class="red">Sorry! <span class="white-answer-heading">You got it wrong!</span></p><div class=""><img src="${quizData[selectedQuestion].image}" alt="You got it wrong!"/></div><p class="guitarist-name"><span class="white-answer-heading">The correct answer is</span> "${correctAnswer}"</p>
      <button type="button" class="next-button">Next Question</button>
-     </div>`);
+     </section>`);
 }
 function updateScore () {
   changeScore();
@@ -123,17 +130,20 @@ function quizResultsPage() {
     $('.jq-form').html(`<div class="results correct-answer"><h3>Good Job!</h3><img class="" src="" alt="" role="img"/><p>You got ${scoreUpdate} / 6</p><p>Excellent job!</p><button class="restartButton">Restart Quiz</button></div>`);
 
   } else if (scoreUpdate < 1 && scoreUpdate >= 3) {
-    $('.jq-form').html(`<div class="results correct-answer"><h3>Good Job!</h3><img class="" src="" alt="" role="img"/><p>You got ${scoreUpdate} / 6</p><p>not too bad!</p><button class="restartButton">Restart Quiz</button></div>`);
+    $('.jq-form').html(`<div class="results correct-answer"><h3>Good Job!</h3><img class="" src="" alt="" role="img"/><p>You got ${scoreUpdate} / 6</p><p>you did ok!</p><button class="restartButton">Restart Quiz</button></div>`);
   }
   else {
-    $('.jq-form').html(`<div class="results correct-answer"><h3></h3><img class="" src="" alt="" role="img"/><p>You got ${scoreUpdate} / 6</p><p>You didn't do so well, want to try again? </p><button class="restartButton">Restart Quiz</button></div>`);
+    $('.jq-form').html(`<div class="results correct-answer"><h3></h3><img class="" src="" alt="" role="img"/><p>You got ${scoreUpdate} / 6</p><p>You didn't do so well, want to try again?</p><button class="restartButton">Restart Quiz</button></div>`);
    }
 }
 
 function restart() {
   $('main').on('click', '.restartButton', function (event) {
    location.reload();
+
+
  });
+
 }
 
 function createQuiz () {
