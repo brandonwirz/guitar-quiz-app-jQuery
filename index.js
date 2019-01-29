@@ -1,9 +1,8 @@
-'use strict'
+
+let selectedQuestion = 0;
+let scoreUpdate = 0;
 
 function startQuiz() {
-  //start quiz
-  //on click hide start div
-  //unhide quiz form div
    $('.quiz-start').on('click', function(event) {
    $('.quiz-start').remove();
    $('.jq-form').css('display', 'block')
@@ -11,19 +10,12 @@ function startQuiz() {
 }
 
 function createHTMLQuestion() {
-  //creates questions in the DOM
   $('.jq-form').html(renderHTML());
-
 }
-let selectedQuestion = 0;
-let scoreUpdate = 0;
 
+//renders form with questions and multiple choice answers
 function renderHTML() {
   if (selectedQuestion < quizData.length) {
-    //creates form with question and multiple choice answers
-    //<!-- <legend>lorem ipsum</legend> -->
-    // <legend></legend>
-
     return `
     <h2>${quizData[selectedQuestion].question}</h2>
     <form class="styled-form">
@@ -51,14 +43,11 @@ function renderHTML() {
         <span id="question-count">Question: ${quizData[selectedQuestion].questionNum}/6</span>
         <span id="score-count">Score: ${scoreUpdate}/${selectedQuestion}</span>
       </div>`
-
   } else {
     quizResultsPage();
     restart();
-    // $('.question-num').text(6)
   }
 }
-
 
 function newQuestion () {
   selectedQuestion++;
@@ -66,11 +55,16 @@ function newQuestion () {
       $('html, body').animate({scrollTop: $("body").offset().top
     }, 'slow', 'swing');
 }
+
 function changeScore () {
   scoreUpdate ++;
 }
 
-//user selects answer on submit run user feedback
+function updateScore () {
+  changeScore();
+  $('.my-score').text(scoreUpdate);
+}
+
 function answer() {
     $('form').on('submit', function (event) {
     event.preventDefault();
@@ -95,26 +89,20 @@ function isCorrectAnswer() {
 function isWrongAnswer() {
   userFeedbackIsWrong();
 }
-
+//if user feedback is correct
 function userFeedbackIsCorrect() {
-  // the feedback for right answer
   let correctAnswer = `${quizData[selectedQuestion].correctAnswer}`;
-     $('.jq-form').html(`<section role="region" class="displayed-content correct-answer"><p class="red">Correct! <span class="white-answer-heading">You got it right!<span></p><div class="">
+     $('.jq-form').html(`<section role="region" class="displayed-content correct-answer"><p class="redAnswer">Correct! <span class="white-answer-heading">You got it right!<span></p><div class="">
      <img src="${quizData[selectedQuestion].image}" alt="You got it right!"/></div><p class="guitarist-name">"${correctAnswer}"</p>
      <button type="button" class="next-button">Next Question</button>
      </section>`);
 }
-
+//if user feedback is wrong
 function userFeedbackIsWrong() {
-  // the feedback for wrong answer
   let correctAnswer = `${quizData[selectedQuestion].correctAnswer}`;
-     $('.jq-form').html(`<section role="region" class="wrong-answer"><p class="red">Sorry! <span class="white-answer-heading">You got it wrong!</span></p><div class=""><img src="${quizData[selectedQuestion].image}" alt="You got it wrong!"/></div><p class="guitarist-name"><span class="white-answer-heading">The correct answer is</span> "${correctAnswer}"</p>
+     $('.jq-form').html(`<section role="region" class="displayed-content wrong-answer"><p class="redAnswer">Sorry! <span class="white-answer-heading">You got it wrong!</span></p><div class=""><img src="${quizData[selectedQuestion].image}" alt="You got it wrong!"/></div><p class="guitarist-name"><span class="white-answer-heading">The correct answer is</span> "${correctAnswer}"</p>
      <button type="button" class="next-button">Next Question</button>
      </section>`);
-}
-function updateScore () {
-  changeScore();
-  $('.my-score').text(scoreUpdate);
 }
 
 function loadNextQuestion () {
@@ -124,26 +112,28 @@ function loadNextQuestion () {
    answer();
  });
 }
-
+//final score results with emssage
 function quizResultsPage() {
-  if (scoreUpdate >= 4) {
-    $('.jq-form').html(`<div class="results correct-answer"><h3>Good Job!</h3><img class="" src="" alt="" role="img"/><p>You got ${scoreUpdate} / 6</p><p>Excellent job!</p><button class="restartButton">Restart Quiz</button></div>`);
+  if (scoreUpdate >= 6) {
+    $('.jq-form').html(`<div class="displayed-content results correct-answer"><h3>Perfect Score! </h3><p>You got ${scoreUpdate} / 6</p><p>Excellent job!</p><button class="restart-button">Restart Quiz</button></div>`);
+  }
+    else if (scoreUpdate >= 4 && scoreUpdate <= 5) {
+    $('.jq-form').html(`<div class="displayed-content results correct-answer"><h3>Good Job!</h3><p>You got ${scoreUpdate} / 6</p><p>Try for a perfect score!</p><button class="restart-button">Restart Quiz</button></div>`);
 
-  } else if (scoreUpdate < 1 && scoreUpdate >= 3) {
-    $('.jq-form').html(`<div class="results correct-answer"><h3>Good Job!</h3><img class="" src="" alt="" role="img"/><p>You got ${scoreUpdate} / 6</p><p>you did ok!</p><button class="restartButton">Restart Quiz</button></div>`);
+  } else if (scoreUpdate > 1 && scoreUpdate <= 3) {
+    $('.jq-form').html(`<div class="displayed-content results correct-answer"><h3>You did ok!</h3><p>You got ${scoreUpdate} / 6</p><p>Try again?</p><button class="restart-button">Restart Quiz</button></div>`);
   }
   else {
-    $('.jq-form').html(`<div class="results correct-answer"><h3></h3><img class="" src="" alt="" role="img"/><p>You got ${scoreUpdate} / 6</p><p>You didn't do so well, want to try again?</p><button class="restartButton">Restart Quiz</button></div>`);
+    $('.jq-form').html(`<div class="displayed-content results correct-answer"><h3>Not so good</h3><p>You got ${scoreUpdate} / 6</p><p>You didn't do very well, want to try again?</p><button class="restart-button">Restart Quiz</button></div>`);
    }
 }
 
 function restart() {
-  $('main').on('click', '.restartButton', function (event) {
+  // console.log('init.onclick');
+  $('main').on('click', '.restart-button', function (event) {
    location.reload();
-
-
+  $('.jq-form').hide();
  });
-
 }
 
 function createQuiz () {
