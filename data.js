@@ -1,7 +1,7 @@
 const quizData = [
     {
       questionNum: 1,
-      question: 'What guitarist Played in Whitesnake, The David Lee Roth Band and has been credited as one of the greatest guitar players of all time?',
+      question: 'What guitarist played in Whitesnake, The David Lee Roth Band and has been credited as one of the greatest guitar players of all time?',
       answer: ['Zakk Wylde', 'Joe Satriani', 'Eddie Van Halen', 'Steve Vai'],
         correctAnswer: 'Steve Vai',
       image: 'http://wirzdesign.com/guitar-images/steve-vai.jpg',
